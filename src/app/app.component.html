@@ -1,0 +1,238 @@
+<header class="site-header">
+  <a class="brand" href="#inicio" aria-label="FM T&T Associated Group, inicio">
+    
+    <span class="brand-name">FM T&amp;T <small>ASSOCIATED GROUP</small></span>
+  </a>
+  <button class="menu-toggle" type="button" aria-label="Abrir menú" (click)="mobileMenuOpen = !mobileMenuOpen">{{ mobileMenuOpen ? '✕' : '☰' }}</button>
+  <nav class="main-nav" [class.open]="mobileMenuOpen" aria-label="Navegación principal">
+    <a href="#inicio" (click)="mobileMenuOpen = false">Inicio</a>
+    <a href="#nosotros" (click)="mobileMenuOpen = false">Nosotros</a>
+    <a href="#cobertura" (click)="mobileMenuOpen = false">Cobertura</a>
+    <a href="#planes" (click)="mobileMenuOpen = false">Planes</a>
+    <a href="#catalogo" (click)="mobileMenuOpen = false">Catálogo</a>
+    <a class="nav-cta" href="#contacto" (click)="mobileMenuOpen = false">Hablemos <span>↗</span></a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <!-- IMAGEN DE FONDO DEL HERO: REEMPLAZAR LAS URLS DE .hero-slide EN src/styles.css
+         por las 2–3 fotografías reales elegidas para la empresa. Mantener overlay azul para legibilidad. -->
+    <div class="hero-slide hero-slide-one" aria-hidden="true"></div>
+    <div class="hero-slide hero-slide-two" aria-hidden="true"></div>
+    <div class="hero-slide hero-slide-three" aria-hidden="true"></div>
+    <div class="hero-shade"></div>
+    <div class="hero-content">
+      <p class="eyebrow"><span></span> CONECTIVIDAD PARA EL CAMPO</p>
+      <h1>El futuro también<br><em>llega al campo.</em></h1>
+      <p class="hero-copy">Internet rural y soluciones tecnológicas para conectar lo que más importa, incluso donde otros no llegan.</p>
+      <div class="hero-actions">
+        <a class="button button-yellow" href="#planes">Explorar planes <span>↗</span></a>
+        <a class="button button-glass" href="#nosotros">Conócenos</a>
+      </div>
+      <div class="hero-proof"><span class="proof-dot"></span> Internet rural · Redes · Seguridad · Domótica</div>
+    </div>
+    <div class="hero-side-note"><span>FM T&amp;T</span><span>Conectamos posibilidades</span></div>
+    <a class="scroll-cue" href="#nosotros" aria-label="Desplazarse a la siguiente sección">↓</a>
+  </section>
+
+  <section class="service-strip" aria-label="Nuestros servicios">
+    <article class="service-mini" *ngFor="let service of services">
+      <span class="service-icon">{{ service.icon }}</span>
+      <h2>{{ service.title }}</h2>
+      <p>{{ service.text }}</p>
+    </article>
+  </section>
+
+  <section class="section about-section" id="#nosotros">
+    <div class="section-heading">
+      <p class="eyebrow eyebrow-blue">QUIÉNES SOMOS</p>
+      <h2>Tecnología que entiende<br><em>la vida rural.</em></h2>
+    </div>
+    <div class="about-copy">
+      <p>En <strong>FM T&amp;T Associated Group</strong> acercamos conectividad y soluciones tecnológicas a comunidades, 
+        hogares, fincas y negocios rurales. Nuestro propósito es ayudarte a aprovechar mejor la tecnología con servicios pensados para tus necesidades.</p>
+      <a class="text-link" href="#contacto">Hablemos de tu proyecto <span>↗</span></a>
+    </div>
+    <div class="reason-grid">
+      <article class="reason-card" *ngFor="let reason of reasons; let i = index">
+        <span class="reason-number">{{ reason.number }}</span>
+        <div class="reason-symbol">{{ i === 0 ? '⌁' : i === 1 ? '◈' : '↗' }}</div>
+        <h3>{{ reason.title }}</h3>
+        <p>{{ reason.text }}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="coverage-section" id="cobertura">
+    <div class="coverage-copy">
+      <p class="eyebrow">NUESTRA COBERTURA</p>
+      <h2>Más cerca de<br><em>tu territorio.</em></h2>
+      <p>Consulta las zonas de servicio y pregúntanos por la disponibilidad para tu vereda o sector. La cobertura puede variar según la ubicación exacta.</p>
+      <ul class="coverage-list">
+        <li><span>01</span> Santa Rosa de Osos, Entrerríos y Don Matías</li>
+        <li><span>02</span> Cisneros y Santo Domingo</li>
+        <li><span>03</span> San Pablo, Aragón y Labores</li>
+        <li><span>04</span> San José de la Montaña</li>
+      </ul>
+      <a class="button button-yellow" href="#contacto">Consultar mi zona <span>↗</span></a>
+    </div>
+    <div class="map-frame">
+      <!-- REEMPLAZAR ESTE IFRAME por el enlace "Insertar un mapa" de Google Maps de la ubicación oficial. -->
+      <iframe title="Mapa de referencia de cobertura rural en Antioquia" src="https://maps.google.com/maps?q=Santa%20Rosa%20de%20Osos%2C%20Antioquia%2C%20Colombia&t=&z=8&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <div class="map-label"><span class="map-pin">⌖</span><div><strong>Conectividad rural</strong><small>Antioquia, Colombia · Mapa de referencia</small></div></div>
+    </div>
+  </section>
+
+  <section class="plans-section section" id="planes">
+    <div class="plans-heading">
+      <div>
+        <p class="eyebrow eyebrow-blue">PLANES POR ZONA</p>
+        <h2>Elige tu <em>plan.</em></h2>
+        <p>Los precios cambian según la zona. Busca tu municipio y mira los planes disponibles.</p>
+      </div>
+      <div class="plan-heading-mark">CONEXIÓN<br><span>HECHA PARA TI</span></div>
+    </div>
+    <div class="plans-grid">
+      <article class="zone-card" [ngClass]="'zone-' + (i + 1)" *ngFor="let zone of plans; let i = index; trackBy: trackPlan">
+        <div class="zone-top"><span class="zone-pill">{{ zone.zone }}</span><span class="zone-signal">▂▄▆</span></div>
+        <h3>{{ zone.title }}</h3>
+        <p class="setup-line" *ngIf="zone.setupPrice !== null">{{ zone.setupLabel }} <strong>{{ formatPrice(zone.setupPrice) }}</strong></p>
+        <p class="setup-line" *ngIf="zone.setupPrice === null">{{ zone.setupLabel }} <strong>+57 324 453 0266</strong></p>
+        <button class="plan-option" type="button" *ngFor="let plan of zone.plans" (click)="openPlan(zone, plan)" [attr.aria-label]="'Consultar ' + (plan.speed || plan.name) + ', ' + formatPrice(plan.price) + ' al mes'">
+          <span class="plan-name">{{ plan.speed || plan.name }}</span>
+          <span class="plan-price">{{ formatPrice(plan.price) }} <small>al mes</small></span>
+          <span class="plan-note" *ngIf="plan.note">{{ plan.note }}</span>
+          <span class="plan-arrow">↗</span>
+        </button>
+      </article>
+    </div>
+    <div class="payment-note"><span class="clock-icon">◷</span><p>El pago es por adelantado: afiliación más la primera mensualidad al momento de la instalación.</p></div>
+    <p class="plans-disclaimer">Seleccionar un plan abre una solicitud de demostración. Esta versión no procesa pagos ni confirma una compra real.</p>
+  </section>
+
+  <section class="catalog-section section" id="catalogo">
+    <div class="catalog-heading">
+      <div><p class="eyebrow eyebrow-blue">MÁS QUE INTERNET</p><h2>Soluciones para<br><em>conectar y proteger.</em></h2></div>
+      <p>También te acompañamos con equipos, instalaciones y tecnología para tus espacios.</p>
+    </div>
+    <div class="product-grid">
+      <article class="product-card" *ngFor="let product of products; trackBy: trackProduct">
+        <div class="product-image" [class.no-image]="!product.image">
+          <img *ngIf="product.image" [src]="product.image" [alt]="product.title" loading="lazy">
+          <span *ngIf="!product.image" class="image-placeholder">IMAGEN DEL PRODUCTO</span>
+          <span class="product-category">{{ product.category }}</span>
+        </div>
+        <div class="product-info"><h3>{{ product.title }}</h3><p>{{ product.description }}</p><a href="#contacto" class="text-link">Consultar producto <span>↗</span></a></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contacto">
+    <div class="contact-content">
+      <p class="eyebrow">HABLEMOS DE TU PROYECTO</p>
+      <h2>Tu próxima conexión<br><em>empieza aquí.</em></h2>
+      <p>Cuéntanos dónde necesitas cobertura o qué solución tecnológica estás buscando.</p>
+      <div class="contact-buttons">
+        <!-- REEMPLAZAR el número de WhatsApp por el canal oficial que confirme la empresa. -->
+        <a class="button button-yellow" href="https://wa.me/573207837849" target="_blank" rel="noopener noreferrer">WhatsApp <span>↗</span></a>
+        <a class="button button-glass" href="mailto:contacto@ejemplo.com">Enviar correo <span>↗</span></a>
+      </div>
+      <div class="contact-numbers">
+        <div><small>LÍNEA DE ATENCIÓN</small><strong>+57 320 783 7849</strong><strong>+57 305 833 9331</strong></div>
+        <div><small>SAN JOSÉ DE LA MONTAÑA</small><strong>+57 324 453 0266</strong></div>
+      </div>
+    </div>
+    <div class="contact-orbit" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit-core">FM<br><small>T&amp;T</small></div><span class="orbit-tag tag-one">INTERNET RURAL</span><span class="orbit-tag tag-two">TECNOLOGÍA</span><span class="orbit-tag tag-three">CONECTIVIDAD</span></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <a class="brand footer-brand" href="#inicio"><span class="brand-name">FM T&amp;T <small>ASSOCIATED GROUP</small></span></a>
+  <p>Conectamos personas, lugares y posibilidades.</p>
+  <nav aria-label="Enlaces del pie de página"><a href="#nosotros">Nosotros</a><a href="#cobertura">Cobertura</a><a href="#planes">Planes</a><a href="#catalogo">Catálogo</a><a href="#contacto">Contacto</a></nav>
+  <span class="copyright">© 2026 FM T&amp;T Associated Group · MVP demostrativo</span>
+  <button class="admin-link" type="button" (click)="toggleAdmin()">Administración</button>
+</footer>
+
+<div class="modal-backdrop" *ngIf="selectedPlan" (click)="closePlan()">
+  <section class="dialog plan-dialog" role="dialog" aria-modal="true" aria-labelledby="checkout-title" (click)="$event.stopPropagation()">
+    <button class="dialog-close" type="button" aria-label="Cerrar" (click)="closePlan()">×</button>
+    <ng-container *ngIf="checkoutStep === 'form'">
+     
+      <p class="eyebrow eyebrow-blue">SOLICITUD DE PLAN</p>
+      <h2 id="checkout-title">Estás a un paso de<br><em>conectarte.</em></h2>
+     
+      <div class="checkout-summary">
+        <span>{{ selectedPlan.plan.speed || selectedPlan.plan.name }}</span>
+        <strong>{{ formatPrice(selectedPlan.plan.price) }} <small>/ mes</small></strong>
+        <small>{{ selectedPlan.zone }}</small>
+        <small *ngIf="selectedPlan.setupPrice !== null">{{ selectedPlan.setupLabel }}: {{ formatPrice(selectedPlan.setupPrice) }}</small>
+      </div>
+
+      <p class="demo-warning">Esto es una solicitud de demostración, no un pago. La empresa deberá confirmar cobertura, instalación y método de pago.</p>
+      <form (ngSubmit)="confirmDemoPurchase()">
+        <label>Nombre completo<input name="buyerName" [(ngModel)]="buyerName" required autocomplete="name" placeholder="Tu nombre"></label>
+        <label>Teléfono de contacto<input name="buyerPhone" [(ngModel)]="buyerPhone" required autocomplete="tel" inputmode="tel" placeholder="300 000 0000"></label>
+        <label>Vereda, municipio o sector<input name="buyerZone" [(ngModel)]="buyerZone" required placeholder="¿Dónde necesitas el servicio?"></label>
+        <p class="form-notice" *ngIf="notice">{{ notice }}</p>
+        <button class="button button-blue full-button" type="submit">Enviar solicitud de prueba <span>↗</span></button>
+      </form>
+
+    </ng-container>
+    
+    <div class="success-state" *ngIf="checkoutStep === 'success'">
+      <div class="success-icon">✓</div>
+      <p class="eyebrow eyebrow-blue">SOLICITUD REGISTRADA EN ESTA DEMO</p>
+      <h2>¡Todo listo!</h2>
+      <p>La demostración terminó correctamente. No se ha procesado ningún pago ni se ha enviado la solicitud a la empresa.</p>
+      <button class="button button-blue full-button" type="button" (click)="closePlan()">Volver a la página principal</button>
+    </div>
+
+  </section>
+</div>
+
+<div class="modal-backdrop admin-backdrop" *ngIf="adminOpen" (click)="toggleAdmin()">
+  <section class="dialog admin-dialog" role="dialog" aria-modal="true" aria-labelledby="admin-title" (click)="$event.stopPropagation()">
+    <button class="dialog-close" type="button" aria-label="Cerrar" (click)="toggleAdmin()">×</button>
+    <p class="eyebrow eyebrow-blue">PANEL LOCAL DE DEMOSTRACIÓN</p>
+    <h2 id="admin-title">Administración</h2>
+    <div *ngIf="!adminAuthenticated">
+      <p>Acceso de prueba. No es una autenticación segura para producción.</p>
+      <form (ngSubmit)="loginAdmin()">
+        <label>Contraseña de demo<input type="password" name="adminPassword" [(ngModel)]="adminPassword" autocomplete="current-password" required></label>
+        <p class="form-notice" *ngIf="adminError">{{ adminError }}</p>
+        <button class="button button-blue full-button" type="submit">Entrar</button>
+      </form>
+      <p class="demo-password-hint">Contraseña de demostración: <code>FMAdmin2026!</code></p>
+    </div>
+    <div *ngIf="adminAuthenticated" class="admin-content">
+      <div class="admin-toolbar"><p>Los cambios solo viven en memoria mientras esta página esté abierta.</p><button class="text-link" type="button" (click)="logoutAdmin()">Cerrar sesión</button></div>
+      <div class="admin-tabs"><button type="button" [class.active]="adminTab === 'plans'" (click)="adminTab = 'plans'">Tarifas</button><button type="button" [class.active]="adminTab === 'products'" (click)="adminTab = 'products'">Productos</button></div>
+      <div *ngIf="adminTab === 'plans'" class="admin-scroll">
+        <article class="admin-zone" *ngFor="let zone of plans">
+          <h3>{{ zone.zone }} · {{ zone.title }}</h3>
+          <label>{{ zone.setupLabel }} (COP)<input type="number" [(ngModel)]="zone.setupPrice" [ngModelOptions]="{standalone: true}" min="0" [disabled]="zone.setupPrice === null"></label>
+          <div class="admin-plan-row" *ngFor="let plan of zone.plans">
+            <label>Nombre / velocidad<input [(ngModel)]="plan.speed" [ngModelOptions]="{standalone: true}" placeholder="Ej. 10 MEGAS"></label>
+            <label>Precio mensual (COP)<input type="number" [(ngModel)]="plan.price" [ngModelOptions]="{standalone: true}" min="0"></label>
+            <label>Nota opcional<input [(ngModel)]="plan.note" [ngModelOptions]="{standalone: true}" placeholder="Condiciones del plan"></label>
+          </div>
+        </article>
+      </div>
+      <div *ngIf="adminTab === 'products'" class="admin-scroll">
+        <button class="button button-blue" type="button" (click)="addProduct()">+ Añadir producto</button>
+        <article class="admin-zone" *ngFor="let product of products">
+          <label>Título<input [(ngModel)]="product.title" [ngModelOptions]="{standalone: true}"></label>
+          <label>Categoría<input [(ngModel)]="product.category" [ngModelOptions]="{standalone: true}"></label>
+          <label>Descripción<textarea [(ngModel)]="product.description" [ngModelOptions]="{standalone: true}"></textarea></label>
+          <label>URL de imagen<input [(ngModel)]="product.image" [ngModelOptions]="{standalone: true}" placeholder="https://..."></label>
+          <button class="remove-button" type="button" (click)="removeProduct(product.id)">Eliminar producto</button>
+        </article>
+      </div>
+      <p class="form-notice" *ngIf="notice">{{ notice }}</p>
+      <button class="button button-yellow full-button" type="button" (click)="saveLocalDemo()">Aplicar cambios en esta sesión</button>
+      <p class="admin-caution">Antes de publicar: crear backend, autenticación real, persistencia de datos y validación del lado servidor. No usar este panel para administrar precios reales todavía.</p>
+    </div>
+  </section>
+</div>
